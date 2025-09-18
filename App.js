@@ -1,18 +1,10 @@
-import React from "react";
-import OnboardingScreen from "./components/Onboarding";
-import LoginScreen from "./auth/LoginScreen";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
-const Stack = createStackNavigator();
+import { StripeProvider } from "@stripe/stripe-react-native";
+import AppNavigator from "./navigation/AppNavigator";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <StripeProvider publishableKey="pk_test_51S8lghEZMsM9cOBPVV1s6NxfHlEg86RKy02iL9sH4COZJAPvzpVQDbJZaeCJ73znD87hgmSR0OVx5FFXmzzAewk200BdKZaFHO">
+      <AppNavigator />
+    </StripeProvider>
   );
 }
